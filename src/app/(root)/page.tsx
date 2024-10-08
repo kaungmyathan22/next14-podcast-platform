@@ -1,7 +1,12 @@
+"use client";
+
 import PodcastCard from "@/components/PodcastCard";
 import { podcastData } from "@/constants";
+import { useQuery } from "convex/react";
+import { api } from "../../../convex/_generated/api";
 
 export default function Home() {
+  const tasks = useQuery(api.tasks.get);
   return (
     <div className="mt-9 flex flex-col gap-9 md:overflow-hidden">
       <section className="flex flex-col gap-5">
@@ -17,7 +22,7 @@ export default function Home() {
                 description={podcastDescription}
                 podcastId={_id}
               />
-            )
+            ),
           )}
         </div>
       </section>
