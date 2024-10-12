@@ -1,7 +1,8 @@
+import AudioProvider from "@/providers/AudioProvider";
+import ConvexClerkProvider from "@/providers/ConvexClerkProvider";
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
-import ConvexClerkProvider from "./providers/ConvexClerkProvider";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -30,11 +31,13 @@ export default function RootLayout({
   return (
     <ConvexClerkProvider>
       <html lang="en">
-        <body
-          className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-        >
-          <>{children}</>
-        </body>
+        <AudioProvider>
+          <body
+            className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+          >
+            <>{children}</>
+          </body>
+        </AudioProvider>
       </html>
     </ConvexClerkProvider>
   );
